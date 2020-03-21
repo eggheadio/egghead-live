@@ -1,9 +1,9 @@
 import React from 'react'
-import { Styled } from 'theme-ui'
+import {Styled} from 'theme-ui'
 import Layout from '../components/layout'
 
 const IndexPage = () => (
-  <Layout title="Learn">
+  <Layout title="Live">
     <Styled.h1>
       <span role="img" aria-label="under construction">
         🚧

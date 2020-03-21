@@ -8,11 +8,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
+import {useStaticQuery, graphql} from 'gatsby'
 import defaultShareCard from '../images/card.png'
 
-function SEO({ description, lang, meta, title, card }) {
-  const { site } = useStaticQuery(
+function SEO({description, lang, meta, title, card}) {
+  const {site} = useStaticQuery(
     graphql`
       query {
         site {
@@ -54,7 +54,7 @@ function SEO({ description, lang, meta, title, card }) {
         },
         {
           name: `og:image`,
-          content: card ? card : `https://egghead.io/learn${defaultShareCard}`,
+          content: card ? card : `https://egghead.io/live${defaultShareCard}`,
         },
         {
           name: `twitter:card`,
@@ -62,7 +62,7 @@ function SEO({ description, lang, meta, title, card }) {
         },
         {
           name: `twitter:image`,
-          content: card ? card : `https://egghead.io/learn${defaultShareCard}`,
+          content: card ? card : `https://egghead.io/live${defaultShareCard}`,
         },
 
         {

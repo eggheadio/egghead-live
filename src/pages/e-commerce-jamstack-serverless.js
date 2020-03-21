@@ -115,13 +115,13 @@ const IndexPage = ({ data }) => {
                 justifyContent: 'flex-start',
               }}
             >
-              <Feature image="/learn/images/create-accounts.svg">
+              <Feature image="/live/images/create-accounts.svg">
                 Sign up using social or username/password combinations
               </Feature>
-              <Feature image="/learn/images/subscription.svg">
+              <Feature image="/live/images/subscription.svg">
                 Pay monthly using Stripe
               </Feature>
-              <Feature image="/learn/images/use-offline.svg">
+              <Feature image="/live/images/use-offline.svg">
                 Use the site offline
               </Feature>
             </div>
@@ -136,13 +136,13 @@ const IndexPage = ({ data }) => {
                 justifyContent: 'flex-start',
               }}
             >
-              <Feature image="/learn/images/deploy.svg">
+              <Feature image="/live/images/deploy.svg">
                 Deploys to a CDN, close to your users
               </Feature>
-              <Feature image="/learn/images/static.svg">
+              <Feature image="/live/images/static.svg">
                 Pre-renders relevant pages as static html
               </Feature>
-              <Feature image="/learn/images/authentication.svg">
+              <Feature image="/live/images/authentication.svg">
                 Authenticates users to access their data using dynamic,
                 client-side apps
               </Feature>
@@ -158,13 +158,13 @@ const IndexPage = ({ data }) => {
                 justifyContent: 'flex-start',
               }}
             >
-              <Feature image="/learn/images/graphql.svg">
+              <Feature image="/live/images/graphql.svg">
                 Provide GraphQL APIs
               </Feature>
-              <Feature image="/learn/images/user-roles.svg">
+              <Feature image="/live/images/user-roles.svg">
                 Implement Role Based Access Control
               </Feature>
-              <Feature image="/learn/images/connect-database.svg">
+              <Feature image="/live/images/connect-database.svg">
                 Interact with serverless databases like Fauna and DynamoDB
               </Feature>
             </div>
@@ -173,7 +173,7 @@ const IndexPage = ({ data }) => {
               together. Along the way we'll cover topics such as: development
               and deployment best practices for JAMStack and serverless
               functions, dealing with canary deployments, CORS, implementing
-              billing, site analytics, and observability. You'll also learn
+              billing, site analytics, and observability. You'll also live
               architectural patterns that enable patterns like webhooks, job
               queues, and how to use lambdas for dynamodb change data capture.
             </p>
