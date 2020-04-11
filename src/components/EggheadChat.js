@@ -101,16 +101,11 @@ const AuthContext = React.createContext()
 
 ReactPlayer.displayName = "eggheadLivePlayer"
 
+let ClientStuff = ({ auth, url }) => {
 
-
-
-const IndexPage = () => {
-
-    let appId = "17479ea7-24d3-4724-ab82-b4664e5004b3"
-    let auth = useOneGraphAuth("eggheadio", appId)
-
+    console.log({ auth, url })
     let client = createClient({
-        url: "https://serve.onegraph.com/dynamic?app_id=" + appId,
+        url,
         fetchOptions: () => {
             let token = auth.client.accessToken().accessToken
             // console.log({ auth })
@@ -121,35 +116,52 @@ const IndexPage = () => {
         }
     })
 
-
-
     return (
-        <AuthContext.Provider value={auth}>
-            <Layout title="Live">
-                <button onClick={() => auth.login("eggheadio")}>Login with egghead.io</button>
-                <Styled.h1>
-                    egghead live
+        <Layout title="Live">
+
+            <Styled.h1>
+                egghead live
         </Styled.h1>
 
-                <div style={{ display: "flex" }}>
+            <div style={{ display: "flex" }}>
 
-                    <ReactPlayer
-                        url="https://stream.mux.com/8w8a7d8kuWTthNxqQx73AvFf2OCeOpNafgtaN6U5H9U.m3u8"
-                        controls playing></ReactPlayer>
+                <ReactPlayer
+                    url="https://stream.mux.com/8w8a7d8kuWTthNxqQx73AvFf2OCeOpNafgtaN6U5H9U.m3u8"
+                    controls playing></ReactPlayer>
 
-                    <UrqlProvider value={client}>
-                        <EggheadChat></EggheadChat>
-                    </UrqlProvider>
-
-
+                <UrqlProvider value={client}>
+                    <EggheadChat></EggheadChat>
+                </UrqlProvider>
 
 
-                </div>
 
 
-            </Layout>
-        </AuthContext.Provider >
+            </div>
+
+
+        </Layout>
     )
+}
+
+
+const IndexPage = () => {
+    let appId = "17479ea7-24d3-4724-ab82-b4664e5004b3"
+
+    let auth = useOneGraphAuth("eggheadio", appId)
+    let url = "https://serve.onegraph.com/dynamic?app_id=" + appId
+
+    if (auth.client === null) return null
+
+    return <AuthContext.Provider value={auth}>
+        {auth.authenticated
+            ? <div>
+
+                <button onClick={() => auth.logout("eggheadio")}>Logout of egghead.io</button>
+                <ClientStuff auth={auth} url={url} />
+            </div>
+            : <div><button onClick={() => auth.login("eggheadio")}>Login with egghead.io</button></div>
+        }
+    </AuthContext.Provider >
 }
 
 export default IndexPage
