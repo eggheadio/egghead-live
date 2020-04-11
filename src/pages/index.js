@@ -5,8 +5,6 @@ import ReactPlayer from "react-player"
 import { Chat, Channel, ChannelHeader, Thread, Window } from 'stream-chat-react';
 import { MessageList, MessageInput } from 'stream-chat-react';
 import { StreamChat } from 'stream-chat';
-import Cookies from "js-cookie"
-import gravatar from "gravatar"
 import { useOneGraphAuth } from "use-one-graph"
 import { gql } from 'apollo-boost';
 import { createClient, useQuery, Provider as UrqlProvider } from "urql"
@@ -45,19 +43,21 @@ let Egghead = () => {
 
   if (!result.data) return null
   if (!result.data.me) return null
+  if (!result.data.me.eggheadio) return null
+  if (!result.data.me.eggheadio.id) return null
 
-  console.log(result.data.me.eggheadio)
+  // console.log(result.data.me.eggheadio)
 
   return <EggheadChat {...result.data.me.eggheadio} />
 }
 
 let EggheadChat = ({ id, fullName, email, avatarUrl, isInstructor }) => {
-  console.log("EggheadChat", email)
+  console.log("EggheadChat", email, id)
   let [channel, setChannel] = useState(null)
 
   useEffect(() => {
 
-    fetch("http://localhost:3000", {
+    fetch("https://heuristic-villani-1ac7bb.netlify.com/.netlify/functions/chat", {
       method: "post",
       body: JSON.stringify({ id: id.toString() })
     })
@@ -115,8 +115,8 @@ const IndexPage = () => {
     url: "https://serve.onegraph.com/dynamic?app_id=" + appId,
     fetchOptions: () => {
       let token = auth.client.accessToken().accessToken
-      console.log({ auth })
-      console.log({ token })
+      // console.log({ auth })
+      // console.log({ token })
       return {
         headers: { authorization: token ? `Bearer ${token}` : '' }
       }
@@ -136,7 +136,7 @@ const IndexPage = () => {
         <div style={{ display: "flex" }}>
 
           <ReactPlayer
-            url="https://player.twitch.tv/johnlindquist"
+            url="https://stream.mux.com/8w8a7d8kuWTthNxqQx73AvFf2OCeOpNafgtaN6U5H9U.m3u8"
             controls playing></ReactPlayer>
 
           <UrqlProvider value={client}>
